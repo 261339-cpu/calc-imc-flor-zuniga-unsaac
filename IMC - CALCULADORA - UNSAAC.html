@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IMC en gestantes · Obstetricia UNSAAC</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap">
+<style>
+:root{--b1:#fde6ee;--b2:#e3f2f3;--card:#fffafc;--ink:#3a1d33;--mute:#6f5568;--line:#ecc9d8;--rose:#c2456f;--rose-d:#8f2c4e;--teal:#0b7f86;--teal-d:#075a5f;
+--c0:#3b82c4;--c1:#2e9e6b;--c2:#e0a100;--c3:#e8742a;--c4:#d9482b;--c5:#a3203d;--sh:rgba(120,40,80,.28);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--b1:#2b1124;--b2:#0f2a30;--card:#2c1b2b;--ink:#fbeaf1;--mute:#c6a8b8;--line:#5a3450;--rose:#ef7ea1;--rose-d:#b4486c;--teal:#4fd0d6;--teal-d:#2a8f95;--sh:rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--b1:#2b1124;--b2:#0f2a30;--card:#2c1b2b;--ink:#fbeaf1;--mute:#c6a8b8;--line:#5a3450;--rose:#ef7ea1;--rose-d:#b4486c;--teal:#4fd0d6;--teal-d:#2a8f95;--sh:rgba(0,0,0,.5)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.5;background:linear-gradient(160deg,var(--b1),var(--b2)) fixed;min-height:100vh}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.fl{animation:fl 7s ease-in-out infinite}.fl:nth-child(2n){animation-duration:9s}
+@keyframes fl{50%{transform:translateY(-14px)}}
+main{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:22px 16px 48px;perspective:1100px}
+/* valla 3D */
+.valla{position:relative;margin:0 6px 34px;transform:rotateX(6deg) rotateY(-5deg);transform-style:preserve-3d}
+.panel{background:linear-gradient(135deg,#7a1f3d,#b4375f);color:#fff;border-radius:10px;padding:16px 18px 14px;text-align:center;border:4px solid #f6d27a;box-shadow:0 14px 0 #4b1226,0 26px 30px var(--sh)}
+.panel small{display:block;font-size:.72rem;opacity:.9;letter-spacing:.02em}
+.panel b{display:block;font-size:clamp(1.05rem,4.4vw,1.35rem);line-height:1.2;margin:4px 0}
+.panel span{font-size:.82rem;color:#f6d27a;font-weight:600}
+.post{position:absolute;bottom:-46px;width:12px;height:36px;background:linear-gradient(90deg,#5b3a2a,#8a5d44);border-radius:0 0 3px 3px;z-index:-1}
+.post.l{left:12%}.post.r{right:12%}
+h1{font-size:clamp(2.1rem,9vw,3.1rem);font-weight:800;line-height:1.02;margin:0 0 6px;color:var(--rose);letter-spacing:-.02em;
+text-shadow:1px 1px 0 var(--rose-d),2px 2px 0 var(--rose-d),3px 3px 0 var(--rose-d),4px 4px 0 var(--rose-d),5px 6px 8px var(--sh)}
+.sub{color:var(--mute);margin:0 0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:22px;box-shadow:0 1px 0 #fff inset,0 8px 0 var(--line),0 20px 30px var(--sh);transform-style:preserve-3d;transition:transform .15s ease-out;will-change:transform}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.seg button{margin:0;background:var(--card);color:var(--mute);border:2px solid var(--line);box-shadow:0 5px 0 var(--line)}
+.seg button[aria-pressed="true"]{background:var(--rose);color:#fff;border-color:var(--rose-d);box-shadow:0 5px 0 var(--rose-d)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g{margin-bottom:6px}
+label{display:block;font-weight:600;font-size:.92rem;margin-bottom:5px}
+input,select{width:100%;font:inherit;font-size:1.2rem;padding:10px 12px;border:2px solid var(--line);border-radius:10px;background:var(--b1);color:var(--ink);box-shadow:inset 0 3px 5px rgba(0,0,0,.12)}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+small.h{color:var(--mute);display:block;margin-top:3px;font-size:.78rem}
+button{font:inherit;font-weight:700;border:0;border-radius:12px;padding:13px 18px;cursor:pointer;transition:transform .08s,box-shadow .08s}
+button:active{transform:translateY(4px)}
+#go{background:var(--teal);color:#fff;width:100%;font-size:1.05rem;margin-top:14px;box-shadow:0 6px 0 var(--teal-d),0 12px 16px var(--sh)}
+#go:active{box-shadow:0 2px 0 var(--teal-d)}
+#clear{background:none;color:var(--mute);width:100%;margin-top:10px}
+#err{color:var(--c5);font-weight:700;min-height:1.3em;margin:10px 0 0}
+#res{display:none}
+#res.on{display:block;animation:pop .6s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pop{from{opacity:0;transform:rotateX(-35deg) translateY(30px)}}
+.top{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.orb{width:104px;height:104px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:2rem;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.65),var(--k) 45%,rgba(0,0,0,.35) 120%);box-shadow:0 14px 22px var(--sh),inset -8px -10px 16px rgba(0,0,0,.25);text-shadow:0 2px 3px rgba(0,0,0,.35)}
+.orb small{display:block;font-size:.62rem;font-weight:600;text-align:center;margin-top:-4px}
+.diag{font-size:1.5rem;font-weight:800;color:var(--k);line-height:1.15}
+.scale{display:flex;height:16px;border-radius:8px;overflow:hidden;position:relative;margin:30px 0 6px;box-shadow:0 5px 0 rgba(0,0,0,.18)}
+.scale i{flex:1}
+.pin{position:absolute;top:-9px;width:6px;height:34px;background:var(--ink);border-radius:3px;transform:translateX(-50%);box-shadow:3px 3px 5px var(--sh);transition:left .6s}
+.ticks{display:flex;justify-content:space-between;font-size:.72rem;color:var(--mute)}
+.alert{margin:18px 0 6px;padding:14px 14px 14px 16px;border-radius:12px;border-left:8px solid var(--k);background:color-mix(in srgb,var(--k) 14%,var(--card));box-shadow:0 5px 0 color-mix(in srgb,var(--k) 35%,transparent)}
+.alert b{display:block;margin-bottom:4px}
+h2{font-size:1rem;margin:20px 0 8px;color:var(--rose)}
+ul.rec{margin:0;padding-left:20px}ul.rec li{margin:5px 0}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+td{padding:7px 4px;border-bottom:1px dashed var(--line)}td:last-child{text-align:right;font-weight:700}
+ol.tr{margin:0;padding:0;list-style:none}
+ol.tr li{display:flex;gap:10px;padding:5px 0;border-bottom:1px dashed var(--line);font-size:.9rem}
+ol.tr b{min-width:5em}.v b{color:var(--c1)}.f b{color:var(--c5)}
+.note{font-size:.8rem;color:var(--mute);text-align:center}
+.hide{display:none}
+@media (prefers-reduced-motion:reduce){.fl,#res.on{animation:none}.card,.pin{transition:none}.valla{transform:none}}
+</style>
+</head>
+<body>
+<svg id="bg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <g opacity=".5" fill="none" stroke="#c2456f" stroke-width="3" stroke-linecap="round"><path d="M0 120h140l18-42 26 84 20-42h90"/><path d="M560 540h90l14-30 20 60 14-30h100" stroke="#0b7f86"/></g>
+  <g fill="#c2456f" opacity=".28"><path class="fl" d="M90 330c-18-14-34-26-34-42a18 18 0 0 1 34-8 18 18 0 0 1 34 8c0 16-16 28-34 42z"/><path class="fl" d="M700 150c-12-9-22-17-22-28a12 12 0 0 1 22-5 12 12 0 0 1 22 5c0 11-10 19-22 28z"/><circle class="fl" cx="320" cy="470" r="14"/><circle class="fl" cx="470" cy="90" r="9"/><circle class="fl" cx="40" cy="520" r="20"/></g>
+  <g opacity=".22" fill="#7a1f3d"><path d="M560 600c-10-60-4-120 14-170-12-12-18-30-12-46 8-22 36-26 52-12 14 12 14 32 4 44 52 18 84 60 90 102 8 52-20 82-34 82z"/><circle cx="610" cy="372" r="30"/><ellipse cx="690" cy="500" rx="46" ry="62"/></g>
+  <g opacity=".3" fill="#fff"><circle cx="690" cy="500" r="22"/></g>
+</svg>
+<main>
+<div class="valla tilt-s" role="banner">
+  <div class="panel"><small>Universidad Nacional de San Antonio Abad del Cusco</small><b>Escuela Profesional de Obstetricia</b><span>Pensamiento Computacional e IA · 2026-II</span></div>
+  <i class="post l"></i><i class="post r"></i>
+</div>
+
+<h1>IMC en gestantes y planificación familiar</h1>
+<p class="sub">Calcula el IMC en gestantes o en mujeres con planificación familiar, revisa el estado nutricional y recibe recomendaciones.</p>
+
+<section class="card tilt">
+  <div class="seg" role="group" aria-label="Tipo de paciente">
+    <button type="button" id="mG" aria-pressed="true">Gestante</button>
+    <button type="button" id="mN" aria-pressed="false">Planificación familiar</button>
+  </div>
+  <div class="row">
+    <div class="g"><label for="peso" id="lp">Peso pregestacional (kg)</label><input id="peso" type="number" inputmode="decimal" step="0.1" placeholder="60"><small class="h" id="hp">Peso antes del embarazo o del primer control (hasta la semana 13).</small></div>
+    <div class="g"><label for="talla">Talla (m)</label><input id="talla" type="number" inputmode="decimal" step="0.01" placeholder="1.55"><small class="h">Si escribes cm (155), se convierte a m.</small></div>
+  </div>
+  <div class="row" id="gest" style="margin-top:12px">
+    <div class="g"><label for="sem">Semanas de gestación</label><input id="sem" type="number" inputmode="numeric" min="1" max="42" placeholder="Opcional"></div>
+    <div class="g"><label for="act">Peso actual (kg)</label><input id="act" type="number" inputmode="decimal" step="0.1" placeholder="Opcional"></div>
+  </div>
+  <div class="row hide" id="pf" style="margin-top:12px">
+    <div class="g" style="grid-column:1/-1"><label for="met">Método de planificación familiar</label><select id="met"><option value="">Sin método / otro</option><option value="trim">Inyectable trimestral (ampolla cada 3 meses)</option><option value="mens">Inyectable mensual (ampolla cada mes)</option><option value="pil">Píldoras</option><option value="imp">Implante</option><option value="otro">DIU o preservativo</option></select></div>
+    <div class="g"><label for="p0">Peso al iniciar el método (kg)</label><input id="p0" type="number" inputmode="decimal" step="0.1" placeholder="Opcional"></div>
+    <div class="g"><label for="mes">Meses de uso</label><input id="mes" type="number" inputmode="numeric" min="0" placeholder="Opcional"></div>
+  </div>
+  <p id="err" role="alert"></p>
+  <button id="go" type="button">Calcular y diagnosticar</button>
+  <button id="clear" type="button">Limpiar</button>
+</section>
+
+<section id="res" class="card tilt" aria-live="polite">
+  <div class="top"><div class="orb"><div><span id="imc">0</span><small>kg/m²</small></div></div><div><div class="diag" id="diag"></div><div id="who" class="note" style="text-align:left"></div></div></div>
+  <div class="scale"><i style="background:var(--c0)"></i><i style="background:var(--c1)"></i><i style="background:var(--c2)"></i><i style="background:var(--c3)"></i><i style="background:var(--c4)"></i><i style="background:var(--c5)"></i><span class="pin" id="pin"></span></div>
+  <div class="ticks"><span>15</span><span>18.5</span><span>25</span><span>30</span><span>35</span><span>40</span><span>45+</span></div>
+  <div class="alert" id="alert"></div>
+  <div id="gain"></div>
+  <h2>Recomendaciones</h2><ul class="rec" id="rec"></ul>
+  <h2>Decisiones del diagrama de flujo</h2><ol class="tr" id="trace"></ol>
+</section>
+<p class="note">Herramienta educativa. No reemplaza la evaluación de un obstetra u otro profesional de salud. Acude a tu establecimiento de salud para tu control prenatal.</p>
+</main>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+var pasos=[{lim:18.5,t:"Bajo peso",k:"--c0",n:0},{lim:25,t:"Peso normal",k:"--c1",n:1},{lim:30,t:"Sobrepeso",k:"--c2",n:2},{lim:35,t:"Obesidad tipo 1",k:"--c3",n:3},{lim:40,t:"Obesidad tipo 2",k:"--c4",n:3}];
+var ult={t:"Obesidad tipo 3",k:"--c5",n:3};
+// Ganancia de peso recomendada en el embarazo (IOM 2009): total y por semana (2.º y 3.er trimestre)
+var IOM=[{tot:[12.5,18],r:[.44,.58]},{tot:[11.5,16],r:[.35,.50]},{tot:[7,11.5],r:[.23,.33]},{tot:[5,9],r:[.17,.27]}];
+var TXT=[
+ {s:"Bajo peso pregestacional",a:"Tu IMC está por debajo del rango normal. En el embarazo esto se asocia con mayor riesgo de anemia, parto pretérmino y bebé con bajo peso al nacer.",
+  r:["Acude pronto a tu control prenatal para una evaluación nutricional.","Aumenta la energía y proteínas con alimentos nutritivos: menestras, huevo, pescado, carnes, lácteos, quinua y frutas.","Come 5 a 6 veces al día en porciones pequeñas.","Toma la suplementación de hierro y ácido fólico que te indique tu obstetra.","Pésate en cada control para vigilar que ganes peso de forma adecuada."]},
+ {s:"Estado nutricional adecuado",a:"Tu IMC está dentro del rango normal. Mantén tus hábitos y tus controles.",
+  r:["Asiste a todos tus controles prenatales.","Mantén una alimentación variada con frutas, verduras, cereales andinos y proteínas.","Toma la suplementación de hierro y ácido fólico según indicación.","Camina o haz actividad física suave si tu obstetra no la contraindica.","Bebe agua segura a lo largo del día."]},
+ {s:"Sobrepeso pregestacional",a:"Tu IMC está por encima del rango normal. Aumenta el riesgo de diabetes gestacional, hipertensión del embarazo (preeclampsia), bebé grande y cesárea.",
+  r:["Pide a tu obstetra una evaluación de glucosa y control de presión arterial en tus visitas.","Reduce frituras, gaseosas, dulces y harinas refinadas; prefiere cocidos, sancochados y al horno.","No hagas dietas de adelgazamiento durante el embarazo: busca una ganancia de peso dentro del rango recomendado.","Camina 30 minutos la mayoría de los días si no hay contraindicación.","Vigila signos de alarma: dolor de cabeza fuerte, visión borrosa, hinchazón repentina."]},
+ {s:"Obesidad pregestacional",a:"Tu IMC indica obesidad. Es un embarazo de mayor riesgo: diabetes gestacional, preeclampsia, parto por cesárea, macrosomía y complicaciones del parto.",
+  r:["Acude a un control prenatal temprano y frecuente; puede requerir derivación a un establecimiento de mayor complejidad.","Pide tamizaje de diabetes gestacional y control de presión arterial.","Sigue un plan de alimentación indicado por nutrición u obstetricia; no hagas dietas por tu cuenta.","Actividad física suave y regular, solo con autorización de tu obstetra.","Acude de inmediato ante dolor de cabeza intenso, visión borrosa, dolor en la boca del estómago, convulsiones o disminución de movimientos fetales."]}
+];
+var TXTN=[
+ {a:"Tu IMC está por debajo del rango normal.",r:["Consulta con un profesional de salud para descartar causas.","Mejora la calidad y cantidad de tu alimentación.","Si planeas un embarazo, llega con un peso adecuado y toma ácido fólico antes de concebir."]},
+ {a:"Tu IMC está dentro del rango normal.",r:["Mantén una alimentación balanceada y actividad física regular.","Si planeas un embarazo, consulta antes por la suplementación con ácido fólico."]},
+ {a:"Tu IMC indica sobrepeso.",r:["Reduce ultraprocesados y azúcares; aumenta verduras y fibra.","Haz al menos 150 minutos de actividad física por semana.","Si planeas un embarazo, alcanzar un peso saludable antes de concebir reduce riesgos."]},
+ {a:"Tu IMC indica obesidad, que aumenta el riesgo de diabetes, hipertensión y problemas en un futuro embarazo.",r:["Acude a un establecimiento de salud para una evaluación integral.","Sigue un plan de alimentación y actividad física guiado por profesionales.","Si planeas un embarazo, consulta antes de concebir."]}
+];
+var gest=true;
+var METH={trim:{n:"Inyectable trimestral",i:"Es el método con más reportes de aumento de peso: en promedio alrededor de 2 a 3 kg en el primer año, aunque varía mucho entre mujeres y en muchas no hay un cambio importante. También influyen el apetito, la alimentación y la actividad física."},
+ mens:{n:"Inyectable mensual",i:"Suele asociarse con poco o ningún cambio de peso. Si notas aumento, revisa también tu alimentación y tu actividad física."},
+ pil:{n:"Píldoras",i:"Los estudios no muestran un aumento de peso importante con las píldoras."},
+ imp:{n:"Implante",i:"Algunas usuarias reportan cambios de peso, pero los estudios no muestran un aumento constante."},
+ otro:{n:"DIU o preservativo",i:"Estos métodos no se relacionan con aumento de peso."}};
+function setMode(g){gest=g;$("mG").setAttribute("aria-pressed",g);$("mN").setAttribute("aria-pressed",!g);$("gest").className=g?"row":"row hide";$("pf").className=g?"row hide":"row";
+ $("lp").textContent=g?"Peso pregestacional (kg)":"Peso actual (kg)";$("hp").textContent=g?"Peso antes del embarazo o del primer control (hasta la semana 13).":"Tu peso actual.";$("res").className="card tilt"}
+function dx(imc){var tr=[];for(var i=0;i<pasos.length;i++){var ok=imc<pasos[i].lim;tr.push({l:pasos[i].lim,ok:ok});if(ok)return{d:pasos[i],tr:tr}}return{d:ult,tr:tr}}
+function fallo(m){$("err").textContent=m;$("res").className="card tilt"}
+function f1(x){return x.toFixed(1)}
+function calcular(){
+ var peso=parseFloat($("peso").value),talla=parseFloat($("talla").value);$("err").textContent="";
+ if(!(peso>0)||!(talla>0))return fallo("Ingresa peso y talla mayores que cero.");
+ if(talla>3)talla/=100;
+ if(talla<.3||talla>2.5)return fallo("La talla debe estar entre 0.30 m y 2.50 m.");
+ if(peso>300)return fallo("Revisa el peso: debe estar en kilogramos.");
+ var sem=parseFloat($("sem").value),act=parseFloat($("act").value);
+ if(gest&&$("sem").value!==""&&!(sem>=1&&sem<=42))return fallo("Las semanas de gestación deben estar entre 1 y 42.");
+ var imc=peso/(talla*talla),r=dx(imc),d=r.d,n=d.n;
+ $("res").style.setProperty("--k","var("+d.k+")");$("alert").style.setProperty("--k","var("+d.k+")");
+ $("imc").textContent=f1(imc);$("diag").textContent=d.t;
+ $("who").textContent=gest?TXT[n].s:"Clasificación del adulto (OMS) · planificación familiar";
+ $("pin").style.left=Math.max(0,Math.min(1,(imc-15)/30))*100+"%";
+ var normal=n===1,ico=normal?"✔ ":"⚠ ";
+ $("alert").innerHTML="<b>"+ico+(normal?"Dentro del rango normal":"Fuera del peso normal: atención")+"</b>"+(gest?TXT[n].a:TXTN[n].a);
+ var rec=(gest?TXT[n].r:TXTN[n].r).slice(),pfh="";
+ if(!gest){var mt=$("met").value;
+  if(mt){var M=METH[mt];pfh="<h2>"+M.n+" y el peso</h2><div class='alert' style='--k:var(--teal)'>"+M.i+"</div>";
+   if(mt==="trim"||mt==="mens")rec.push("Acude puntualmente a tu fecha de aplicación; no la dejes por tu cuenta.");
+   rec.push("Si te preocupa tu peso, habla con tu obstetra: puede revisar tu alimentación, tu actividad física o el método. No suspendas el método sin asesoría, porque quedarías sin protección anticonceptiva.")}
+  var p0=parseFloat($("p0").value),mes=parseFloat($("mes").value);
+  if(p0>0){var dk=peso-p0,pc=dk/p0*100;pfh+="<h2>Cambio de peso desde que iniciaste</h2><table><tr><td>Cambio"+($("mes").value!==""&&mes>=0?" en "+mes+" meses":"")+"</td><td>"+(dk>0?"+":"")+f1(dk)+" kg ("+f1(pc)+"%)</td></tr></table>";
+   if(pc>=5)pfh+="<div class='alert' style='--k:var(--c3)'><b>⚠ Aumento de 5% o más</b>Coméntalo con tu obstetra, sobre todo si ocurrió en los primeros 6 meses: conviene revisar tu alimentación o el método.</div>"}}
+ $("rec").innerHTML=rec.map(function(x){return"<li>"+x+"</li>"}).join("");
+ var g="";
+ if(gest){var m=IOM[n],h="<h2>Ganancia de peso recomendada</h2><table><tr><td>Total en todo el embarazo</td><td>"+m.tot[0]+" – "+m.tot[1]+" kg</td></tr>";
+  if(sem>=1){var lo,hi;if(sem<=13){lo=.5*sem/13;hi=2*sem/13}else{lo=.5+m.r[0]*(sem-13);hi=2+m.r[1]*(sem-13)}
+   h+="<tr><td>Esperada a las "+sem+" semanas</td><td>"+f1(lo)+" – "+f1(hi)+" kg</td></tr>";
+   if(act>0){var gan=act-peso;var est=gan<lo?"Por debajo de lo esperado":gan>hi?"Por encima de lo esperado":"Dentro de lo esperado";
+    h+="<tr><td>Tu ganancia actual</td><td>"+f1(gan)+" kg</td></tr><tr><td>Evaluación</td><td>"+est+"</td></tr>";
+    if(est!=="Dentro de lo esperado")$("alert").innerHTML+="<br><b style='margin-top:8px'>⚠ Tu ganancia de peso está "+est.toLowerCase().replace("por ","por ")+".</b>Coméntalo en tu próximo control prenatal para ajustar tu alimentación."}}
+  g=h+"</table>"}
+ $("gain").innerHTML=g+pfh;
+ var t="";r.tr.forEach(function(x){t+='<li class="'+(x.ok?"v":"f")+'"><b>'+(x.ok?"Verdadero":"Falso")+"</b><span>¿IMC &lt; "+x.l+"?</span></li>"});
+ if(!r.tr[r.tr.length-1].ok)t+='<li class="v"><b>Resultado</b><span>Ninguna condición se cumplió: obesidad tipo 3</span></li>';
+ $("trace").innerHTML=t;$("res").className="card tilt on";$("res").scrollIntoView({behavior:"smooth",block:"nearest"})}
+function limpiar(){["peso","talla","sem","act","p0","mes"].forEach(function(i){$(i).value=""});$("err").textContent="";$("res").className="card tilt";$("peso").focus()}
+$("go").onclick=calcular;$("clear").onclick=limpiar;$("mG").onclick=function(){setMode(true)};$("mN").onclick=function(){setMode(false)};
+document.addEventListener("keydown",function(e){if(e.key==="Enter")calcular()});
+// Inclinación 3D con el puntero
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches&&matchMedia("(hover:hover)").matches){
+ document.querySelectorAll(".tilt").forEach(function(el){
+  el.addEventListener("pointermove",function(e){var b=el.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;el.style.transform="rotateX("+(-y*5)+"deg) rotateY("+(x*7)+"deg)"});
+  el.addEventListener("pointerleave",function(){el.style.transform=""})})}
+</script>
+</body>
+</html>
